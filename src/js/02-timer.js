@@ -25,17 +25,18 @@ class Timer {
     this.intervalId = setInterval(() => {
       const dateNow = Date.now();
       const startTimerTime = this.usersChosenData - dateNow;
-      if (startTimerTime > 0) {
+      if (startTimerTime < 1000) {
         this.stop();
       }
       const timerTime = convertMs(startTimerTime);
-      onTick(timerTime);
+      console.log(this.onTick);
+      this.onTick(timerTime);
     }, 1000);
   }
   stop() {
-    clearInterval(intervalId);
+    clearInterval(this.intervalId);
     buttonStart.removeAttribute('disabled');
-    onTick(convertMs(0));
+    this.onTick(convertMs(0));
   }
 }
 
@@ -50,7 +51,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     usersTime = selectedDates[0].getTime();
-    if (usersTime >= Date.now()) {
+    if (usersTime <= Date.now()) {
       buttonStart.setAttribute('disabled', true);
       Notify.warning('Please choose a date in the future');
       return;
