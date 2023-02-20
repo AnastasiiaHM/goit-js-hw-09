@@ -29,7 +29,7 @@ class Timer {
         this.stop();
       }
       const timerTime = convertMs(startTimerTime);
-      console.log(this.onTick);
+
       this.onTick(timerTime);
     }, 1000);
   }
