@@ -3,13 +3,12 @@ import 'flatpickr/dist/flatpickr.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import '../../node_modules/notiflix/dist/notiflix-3.2.6.min.css';
 
-const input = document.querySelector('#datetime-picker');
 const buttonStart = document.querySelector('[data-start]');
 const daysSpan = document.querySelector('[data-days]');
 const hoursSpan = document.querySelector('[data-hours]');
 const minutesSpan = document.querySelector('[data-minutes]');
 const secondsSpan = document.querySelector('[data-seconds]');
-
+buttonStart.setAttribute('disabled', true);
 class Timer {
   constructor({ onTick }) {
     this.usersChosenData = null;
@@ -56,7 +55,7 @@ const options = {
       Notify.warning('Please choose a date in the future');
       return;
     }
-    buttonStart.setAttribute('disabled', false);
+    buttonStart.removeAttribute('disabled');
     timerFromClass.usersChosenData = usersTime;
   },
 };
