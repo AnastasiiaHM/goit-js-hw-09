@@ -12,7 +12,6 @@ function getRandomHexColor() {
 function handleClickButtonStart() {
   startChangeColorBody = setInterval(() => {
     body.style.backgroundColor = getRandomHexColor();
-    start.setAttribute('disabled', true);
   }, 1000);
 }
 

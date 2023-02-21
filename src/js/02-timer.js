@@ -50,12 +50,13 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    usersTime = selectedDates[0].getTime();
+    const usersTime = selectedDates[0].getTime();
     if (usersTime <= Date.now()) {
       buttonStart.setAttribute('disabled', true);
       Notify.warning('Please choose a date in the future');
       return;
     }
+    buttonStart.setAttribute('disabled', false);
     timerFromClass.usersChosenData = usersTime;
   },
 };
