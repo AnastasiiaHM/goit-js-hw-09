@@ -10,8 +10,8 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 function handleClickButtonStart() {
+  start.setAttribute('disabled', true);
   startChangeColorBody = setInterval(() => {
-    start.setAttribute('disabled', true);
     body.style.backgroundColor = getRandomHexColor();
   }, 1000);
 }
